@@ -53,10 +53,7 @@ function zip3(x, y, z) {
     return result;
 }
 
-proto.update = function(trace) {
-    this.data = trace;
-
-    var scene = this.scene;
+function convert(scene, trace) {
     var layout = scene.fullSceneLayout;
 
     // Unpack position data
@@ -78,11 +75,13 @@ proto.update = function(trace) {
             toDataCoords(layout.zaxis, trace.w, scene.dataScale[2])
         ),
         colormap: 'portland'
-//         meshgrid: [trace.x, trace.y, trace.z]
     });
 
-//     console.log(meshData)
+    return meshData;
+};
 
+proto.update = function(trace) {
+    var meshData = convert(trace);
     this.mesh.update(meshData);
 };
 
@@ -91,13 +90,15 @@ proto.dispose = function() {
     this.mesh.dispose();
 };
 
-function createMesh3DTrace(scene, data) {
+function createMesh3DTrace(scene, trace) {
     var gl = scene.glplot.gl;
-    var mesh = createMesh(gl);
+    var meshData = convert(scene, trace);
+    var mesh = createMesh(gl, meshData);
     var result = new Mesh3DTrace(scene, mesh, data.uid);
+
     mesh._trace = result;
-    result.update(data);
     scene.glplot.add(mesh);
+
     return result;
 }
 
