@@ -20,15 +20,15 @@ module.exports = {
     axisTitleOffset: 28,
     axisExtentOffset: 10,
     bar: {
-        width: 4, // Visible width of the filter bar
+        width: 20, // Visible width of the filter bar
         captureWidth: 10, // Mouse-sensitive width for interaction (Fitts law)
-        fillColor: 'magenta', // Color of the filter bar fill
-        fillOpacity: 1, // Filter bar fill opacity
+        fillColor: 'gray', // Color of the filter bar fill
+        fillOpacity: 0.45, // Filter bar fill opacity
         snapDuration: 150, // tween duration in ms for brush snap for ordinal axes
         snapRatio: 0.25, // ratio of bar extension relative to the distance between two adjacent ordinal values
         snapClose: 0.01, // fraction of inter-value distance to snap to the closer one, even if you're not over it
         strokeColor: 'white', // Color of the filter bar side lines
-        strokeOpacity: 1, // Filter bar side stroke opacity
+        strokeOpacity: 0.45, // Filter bar side stroke opacity
         strokeWidth: 1, // Filter bar side stroke width in pixels
         handleHeight: 8, // Height of the filter bar vertical resize areas on top and bottom
         handleOpacity: 1, // Opacity of the filter bar vertical resize areas on top and bottom
